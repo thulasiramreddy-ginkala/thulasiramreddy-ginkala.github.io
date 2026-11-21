@@ -14,6 +14,7 @@
     <!-- Open Graph (LinkedIn / social preview) -->
     <meta property="og:title" content="G Thulasiram | Network Engineer II & Test Automation Specialist">
     <meta property="og:description" content="5+ years in 4G/5G telecom at Verizon & Tech Mahindra. Python automation, 5G SA/NSA core, GitLab CI/CD.">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://thulasiramreddy-ginkala.github.io">
     <meta property="og:image" content="https://thulasiramreddy-ginkala.github.io/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -23,6 +24,16 @@
     <meta name="twitter:description" content="5+ years in 4G/5G telecom at Verizon & Tech Mahindra. Python automation, 5G SA/NSA core.">
 </head>
 <body>
+
+    <!-- Shared gradient for SVG icons -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="iconGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#a78bfa"/>
+                <stop offset="1" stop-color="#00d4ff"/>
+            </linearGradient>
+        </defs>
+    </svg>
 
     <!-- Scroll progress bar -->
     <div class="scroll-progress-bar" id="scrollProgressBar"></div>
@@ -51,6 +62,13 @@
             <div class="blob blob-1"></div>
             <div class="blob blob-2"></div>
             <div class="grid-overlay"></div>
+            <div class="hero-rings"><span></span><span></span><span></span></div>
+            <span class="float-chip chip-1">5G NR</span>
+            <span class="float-chip chip-2">SIP</span>
+            <span class="float-chip chip-3">Python</span>
+            <span class="float-chip chip-4">NGAP</span>
+            <span class="float-chip chip-5">VoLTE</span>
+            <span class="float-chip chip-6">GTP-U</span>
         </div>
         <div class="hero-content">
             <p class="hero-eyebrow">Hello, I'm</p>
@@ -165,7 +183,11 @@
             <div class="skills-grid">
 
                 <div class="skill-card reveal">
-                    <div class="skill-card-icon">&#128187;</div>
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/>
+                        </svg>
+                    </div>
                     <h3>Programming &amp; Web</h3>
                     <div class="skill-tags">
                         <span class="tag">Python</span>
@@ -179,7 +201,12 @@
                 </div>
 
                 <div class="skill-card reveal">
-                    <div class="skill-card-icon">&#128225;</div>
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="10" r="2"/><path d="M8 6a5.7 5.7 0 0 0 0 8"/><path d="M16 6a5.7 5.7 0 0 1 0 8"/>
+                            <path d="M5 3.5a10 10 0 0 0 0 13"/><path d="M19 3.5a10 10 0 0 1 0 13"/><path d="M9 21l3-9 3 9"/>
+                        </svg>
+                    </div>
                     <h3>Network Domains &amp; Protocols</h3>
                     <div class="skill-tags">
                         <span class="tag">4G LTE</span>
@@ -194,7 +221,11 @@
                 </div>
 
                 <div class="skill-card reveal">
-                    <div class="skill-card-icon">&#128300;</div>
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M9 3h6"/><path d="M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7.5 14h9"/>
+                        </svg>
+                    </div>
                     <h3>Automation &amp; Testing Tools</h3>
                     <div class="skill-tags">
                         <span class="tag">ANT</span>
@@ -208,7 +239,11 @@
                 </div>
 
                 <div class="skill-card reveal">
-                    <div class="skill-card-icon">&#9881;&#65039;</div>
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="6 10 10 13 6 16"/><path d="M12 16h6"/>
+                        </svg>
+                    </div>
                     <h3>Developer Tools &amp; Ops</h3>
                     <div class="skill-tags">
                         <span class="tag">Docker</span>
@@ -224,6 +259,119 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5G ARCHITECTURE ===== -->
+    <section class="section arch-section" id="architecture">
+        <div class="container">
+            <h2 class="section-title reveal">5G Network Landscape</h2>
+            <p class="arch-sub reveal">The core flow I test and automate &mdash; from the handset all the way to the IMS core.</p>
+            <div class="arch-card reveal">
+                <div class="arch-scroll">
+                    <svg class="arch-svg" viewBox="0 0 940 280" role="img" aria-label="5G SA architecture: UE connects over NR to gNB, then N3 to UPF, N6 to the data network and SIP to the IMS core. AMF, SMF and UDM form the control plane.">
+                        <defs>
+                            <linearGradient id="archBox" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#1a2547"/>
+                                <stop offset="1" stop-color="#111a2e"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- control plane links -->
+                        <g class="arch-ctrl">
+                            <path d="M250 200 V100"/>
+                            <path d="M300 75 H420"/>
+                            <path d="M470 100 V200"/>
+                            <path d="M520 75 H620"/>
+                        </g>
+                        <!-- user plane links -->
+                        <g class="arch-user">
+                            <path d="M120 225 H200"/>
+                            <path d="M300 225 H420"/>
+                            <path d="M520 225 H620"/>
+                            <path d="M720 225 H790"/>
+                        </g>
+
+                        <!-- radio waves on the NR link -->
+                        <g class="arch-waves" fill="none" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round">
+                            <path d="M146 214a14 14 0 0 1 0 22" style="--w:0"/>
+                            <path d="M154 208a22 22 0 0 1 0 34" style="--w:1"/>
+                            <path d="M162 202a30 30 0 0 1 0 46" style="--w:2"/>
+                        </g>
+
+                        <!-- interface labels -->
+                        <g class="arch-label" text-anchor="middle">
+                            <text x="124" y="205" text-anchor="start">Uu</text>
+                            <text x="360" y="215">N3 · GTP-U</text>
+                            <text x="570" y="215">N6</text>
+                            <text x="755" y="215">SIP</text>
+                            <text x="360" y="65">N11</text>
+                            <text x="570" y="65">N10</text>
+                            <text x="262" y="154" text-anchor="start">N2 · NGAP</text>
+                            <text x="482" y="154" text-anchor="start">N4 · PFCP</text>
+                        </g>
+
+                        <!-- control plane nodes -->
+                        <g class="arch-node node-ctrl" fill="url(#archBox)">
+                            <rect x="200" y="50" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="250" y="72" text-anchor="middle">AMF</text>
+                            <text class="n-sub" x="250" y="88" text-anchor="middle">Mobility Mgmt</text>
+                        </g>
+                        <g class="arch-node node-ctrl" fill="url(#archBox)">
+                            <rect x="420" y="50" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="470" y="72" text-anchor="middle">SMF</text>
+                            <text class="n-sub" x="470" y="88" text-anchor="middle">Session Mgmt</text>
+                        </g>
+                        <g class="arch-node node-ctrl" fill="url(#archBox)">
+                            <rect x="620" y="50" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="670" y="72" text-anchor="middle">UDM</text>
+                            <text class="n-sub" x="670" y="88" text-anchor="middle">Subscriber Data</text>
+                        </g>
+
+                        <!-- user plane nodes -->
+                        <g class="arch-node node-user" fill="url(#archBox)">
+                            <rect x="20" y="200" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="70" y="222" text-anchor="middle">UE</text>
+                            <text class="n-sub" x="70" y="238" text-anchor="middle">Handset</text>
+                        </g>
+                        <g class="arch-node node-user" fill="url(#archBox)">
+                            <rect x="200" y="200" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="250" y="222" text-anchor="middle">gNB</text>
+                            <text class="n-sub" x="250" y="238" text-anchor="middle">5G NR</text>
+                        </g>
+                        <g class="arch-node node-user" fill="url(#archBox)">
+                            <rect x="420" y="200" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="470" y="222" text-anchor="middle">UPF</text>
+                            <text class="n-sub" x="470" y="238" text-anchor="middle">User Plane</text>
+                        </g>
+                        <g class="arch-node node-user" fill="url(#archBox)">
+                            <rect x="620" y="200" width="100" height="50" rx="10"/>
+                            <text class="n-main" x="670" y="222" text-anchor="middle">DN</text>
+                            <text class="n-sub" x="670" y="238" text-anchor="middle">Data Network</text>
+                        </g>
+                        <g class="arch-node node-user" fill="url(#archBox)">
+                            <rect x="790" y="200" width="130" height="50" rx="10"/>
+                            <text class="n-main" x="855" y="222" text-anchor="middle">IMS Core</text>
+                            <text class="n-sub" x="855" y="238" text-anchor="middle">CSCF · HSS</text>
+                        </g>
+
+                        <!-- moving packets -->
+                        <g class="arch-packets">
+                            <circle r="4.5" fill="#00d4ff"><animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" path="M120 225 H790"/></circle>
+                            <circle r="4.5" fill="#00d4ff"><animateMotion dur="3.6s" begin="-1.2s" repeatCount="indefinite" path="M120 225 H790"/></circle>
+                            <circle r="4.5" fill="#00d4ff"><animateMotion dur="3.6s" begin="-2.4s" repeatCount="indefinite" path="M120 225 H790"/></circle>
+                            <circle r="3.5" fill="#a78bfa"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite" path="M250 200 V100"/></circle>
+                            <circle r="3.5" fill="#a78bfa"><animateMotion dur="1.8s" begin="-0.6s" repeatCount="indefinite" path="M300 75 H420"/></circle>
+                            <circle r="3.5" fill="#a78bfa"><animateMotion dur="1.8s" begin="-1.2s" repeatCount="indefinite" path="M470 100 V200"/></circle>
+                            <circle r="3.5" fill="#a78bfa"><animateMotion dur="1.8s" begin="-0.3s" repeatCount="indefinite" path="M520 75 H620"/></circle>
+                        </g>
+                    </svg>
+                </div>
+                <div class="arch-legend">
+                    <span class="legend-item"><i class="legend-swatch swatch-user"></i>User plane traffic</span>
+                    <span class="legend-item"><i class="legend-swatch swatch-ctrl"></i>Control plane signalling</span>
+                </div>
             </div>
         </div>
     </section>
@@ -281,6 +429,47 @@
             <div class="projects-grid">
 
                 <div class="project-card reveal">
+                    <div class="project-art" aria-hidden="true">
+                        <svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <marker id="p1arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#00d4ff"/></marker>
+                            </defs>
+                            <rect width="320" height="130" fill="#0e1630"/>
+                            <g class="art-flowline" stroke="#00d4ff" stroke-width="1.6" marker-end="url(#p1arrow)">
+                                <line x1="68" y1="55" x2="90" y2="55"/>
+                                <line x1="148" y1="55" x2="170" y2="55"/>
+                                <line x1="228" y1="55" x2="250" y2="55"/>
+                            </g>
+                            <g font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" text-anchor="middle">
+                                <rect x="12" y="38" width="56" height="34" rx="8" fill="#17214a" stroke="#7c3aed"/>
+                                <text x="40" y="59" fill="#c4b5fd">Python</text>
+                                <rect x="92" y="38" width="56" height="34" rx="8" fill="#17214a" stroke="#7c3aed"/>
+                                <text x="120" y="59" fill="#c4b5fd">ANT</text>
+                                <rect x="172" y="38" width="56" height="34" rx="8" fill="#17214a" stroke="#00d4ff"/>
+                                <text x="200" y="59" fill="#7de8ff">IXIA</text>
+                                <rect x="252" y="38" width="56" height="34" rx="8" fill="#17214a" stroke="#22c55e"/>
+                                <text x="280" y="59" fill="#86efac">Report</text>
+                            </g>
+                            <g class="art-pass" fill="#22c55e">
+                                <rect x="19"  y="96" width="12" height="12" rx="3" style="--i:0"/>
+                                <rect x="37"  y="96" width="12" height="12" rx="3" style="--i:1"/>
+                                <rect x="55"  y="96" width="12" height="12" rx="3" style="--i:2"/>
+                                <rect x="73"  y="96" width="12" height="12" rx="3" style="--i:3"/>
+                                <rect x="91"  y="96" width="12" height="12" rx="3" style="--i:4"/>
+                                <rect x="109" y="96" width="12" height="12" rx="3" style="--i:5"/>
+                                <rect x="127" y="96" width="12" height="12" rx="3" style="--i:6"/>
+                                <rect x="145" y="96" width="12" height="12" rx="3" style="--i:7"/>
+                                <rect x="163" y="96" width="12" height="12" rx="3" style="--i:8"/>
+                                <rect x="181" y="96" width="12" height="12" rx="3" style="--i:9"/>
+                                <rect x="199" y="96" width="12" height="12" rx="3" style="--i:10"/>
+                                <rect x="217" y="96" width="12" height="12" rx="3" style="--i:11"/>
+                                <rect x="235" y="96" width="12" height="12" rx="3" style="--i:12"/>
+                                <rect x="253" y="96" width="12" height="12" rx="3" style="--i:13"/>
+                                <rect x="271" y="96" width="12" height="12" rx="3" style="--i:14"/>
+                                <rect x="289" y="96" width="12" height="12" rx="3" style="--i:15"/>
+                            </g>
+                        </svg>
+                    </div>
                     <div class="project-card-top">
                         <span class="project-icon">&#129302;</span>
                         <span class="project-date">Aug 2023 – Apr 2026</span>
@@ -303,6 +492,33 @@
                 </div>
 
                 <div class="project-card reveal">
+                    <div class="project-art" aria-hidden="true">
+                        <svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <marker id="p2arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#00d4ff"/></marker>
+                            </defs>
+                            <rect width="320" height="130" fill="#0e1630"/>
+                            <g font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="600" text-anchor="middle">
+                                <text x="44" y="18" fill="#c4b5fd">UE</text>
+                                <text x="124" y="18" fill="#c4b5fd">P-CSCF</text>
+                                <text x="204" y="18" fill="#c4b5fd">S-CSCF</text>
+                                <text x="284" y="18" fill="#c4b5fd">HSS</text>
+                            </g>
+                            <g stroke="#334155" stroke-width="1" stroke-dasharray="3 4">
+                                <line x1="44" y1="26" x2="44" y2="122"/>
+                                <line x1="124" y1="26" x2="124" y2="122"/>
+                                <line x1="204" y1="26" x2="204" y2="122"/>
+                                <line x1="284" y1="26" x2="284" y2="122"/>
+                            </g>
+                            <g class="art-seq" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#94a3b8" text-anchor="middle">
+                                <g style="--d:0s"><line x1="46" y1="46" x2="120" y2="46" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#p2arrow)"/><text x="84" y="42">INVITE</text></g>
+                                <g style="--d:.7s"><line x1="126" y1="62" x2="200" y2="62" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#p2arrow)"/><text x="164" y="58">INVITE</text></g>
+                                <g style="--d:1.4s"><line x1="206" y1="78" x2="280" y2="78" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#p2arrow)"/><text x="244" y="74">DIAMETER</text></g>
+                                <g style="--d:2.1s"><line x1="282" y1="94" x2="208" y2="94" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#p2arrow)"/><text x="244" y="90">Answer</text></g>
+                                <g style="--d:2.8s"><line x1="202" y1="112" x2="48" y2="112" stroke="#22c55e" stroke-width="1.5" marker-end="url(#p2arrow)"/><text x="124" y="108" fill="#86efac">200 OK</text></g>
+                            </g>
+                        </svg>
+                    </div>
                     <div class="project-card-top">
                         <span class="project-icon">&#128246;</span>
                         <span class="project-date">Dec 2022 – Aug 2023</span>
@@ -324,6 +540,43 @@
                 </div>
 
                 <div class="project-card reveal">
+                    <div class="project-art" aria-hidden="true">
+                        <svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <linearGradient id="p3grad" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0" stop-color="#7c3aed"/>
+                                    <stop offset="1" stop-color="#00d4ff"/>
+                                </linearGradient>
+                                <linearGradient id="p3bar" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0" stop-color="#00d4ff" stop-opacity=".9"/>
+                                    <stop offset="1" stop-color="#7c3aed" stop-opacity=".5"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="320" height="130" fill="#0e1630"/>
+                            <g stroke="#1e293b" stroke-width="1">
+                                <line x1="16" y1="40" x2="184" y2="40"/>
+                                <line x1="16" y1="68" x2="184" y2="68"/>
+                                <line x1="16" y1="96" x2="184" y2="96"/>
+                            </g>
+                            <line x1="16" y1="116" x2="184" y2="116" stroke="#334155" stroke-width="1.2"/>
+                            <g class="art-bars" fill="url(#p3bar)">
+                                <rect x="24"  y="86" width="14" height="30" rx="3" style="--i:0"/>
+                                <rect x="46"  y="72" width="14" height="44" rx="3" style="--i:1"/>
+                                <rect x="68"  y="80" width="14" height="36" rx="3" style="--i:2"/>
+                                <rect x="90"  y="58" width="14" height="58" rx="3" style="--i:3"/>
+                                <rect x="112" y="68" width="14" height="48" rx="3" style="--i:4"/>
+                                <rect x="134" y="46" width="14" height="70" rx="3" style="--i:5"/>
+                                <rect x="156" y="54" width="14" height="62" rx="3" style="--i:6"/>
+                            </g>
+                            <polyline class="art-line" points="31,76 53,62 75,70 97,48 119,58 141,36 163,44" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="250" cy="62" r="28" fill="none" stroke="#1e293b" stroke-width="9"/>
+                            <circle class="art-donut" cx="250" cy="62" r="28" fill="none" stroke="url(#p3grad)" stroke-width="9" stroke-linecap="round" transform="rotate(-90 250 62)"/>
+                            <text x="250" y="66" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#e2e8f0">5G</text>
+                            <g font-family="JetBrains Mono, monospace" font-size="8.5" fill="#64748b" text-anchor="middle">
+                                <text x="250" y="110">SA / NSA health</text>
+                            </g>
+                        </svg>
+                    </div>
                     <div class="project-card-top">
                         <span class="project-icon">&#127760;</span>
                         <span class="project-date">May 2021 – Dec 2022</span>
