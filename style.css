@@ -382,12 +382,35 @@ a {
 }
 
 .avatar-ring {
+    position: relative;
     width: 168px; height: 168px;
+    margin: 28px;
     border-radius: 50%;
     padding: 3px;
     background: linear-gradient(135deg, var(--accent2), var(--accent));
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.18);
     flex-shrink: 0;
 }
+.avatar-ring::before,
+.avatar-ring::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.avatar-ring::before {
+    inset: -14px;
+    border: 1px dashed rgba(0, 212, 255, 0.4);
+    animation: spin 22s linear infinite;
+}
+.avatar-ring::after {
+    inset: -26px;
+    border: 2px solid transparent;
+    border-top-color: var(--accent2);
+    border-right-color: rgba(0, 212, 255, 0.35);
+    animation: spin 9s linear infinite reverse;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 .avatar-inner {
     width: 100%; height: 100%;
     border-radius: 50%;
@@ -469,9 +492,19 @@ a {
     box-shadow: 0 14px 40px rgba(0, 212, 255, 0.06);
 }
 .skill-card-icon {
-    font-size: 1.9rem;
-    margin-bottom: 14px;
-    display: block;
+    width: 54px; height: 54px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.14), rgba(0, 212, 255, 0.1));
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card-icon svg { width: 30px; height: 30px; }
+.skill-card:hover .skill-card-icon {
+    transform: rotate(-6deg) scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.18);
 }
 .skill-card h3 {
     font-size: 0.78rem;
@@ -764,10 +797,13 @@ a {
     .hamburger { display: flex; }
 
     .about-avatar { flex-direction: column; }
-    .avatar-ring  { width: 130px; height: 130px; }
+    .avatar-ring  { width: 130px; height: 130px; margin: 24px; }
+    .arch-card    { padding: 18px 14px; }
+    .arch-svg     { min-width: 680px; }
     .timeline     { padding-left: 28px; }
     .timeline-dot { left: -36px; }
     .timeline-header { flex-direction: column; align-items: flex-start; }
+    .contact-card { min-width: unset; width: 100%; }
     .hero-cta { flex-direction: column; align-items: center; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .stat-number, .stat-suffix { font-size: 2rem; }
@@ -915,3 +951,246 @@ a {
     color: #22c55e;
 }
 
+/* ===========================
+   HERO GRAPHICS — radio rings & floating chips
+   =========================== */
+.hero-rings {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 0; height: 0;
+}
+.hero-rings span {
+    position: absolute;
+    width: 980px; height: 980px;
+    left: -490px; top: -490px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    opacity: 0;
+    animation: ringPulse 7.5s ease-out infinite;
+}
+.hero-rings span:nth-child(2) { animation-delay: 2.5s; }
+.hero-rings span:nth-child(3) { animation-delay: 5s; }
+@keyframes ringPulse {
+    0%   { transform: scale(0.12); opacity: 0.8; }
+    100% { transform: scale(1);    opacity: 0; }
+}
+
+.float-chip {
+    position: absolute;
+    display: none;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(13, 21, 38, 0.7);
+    border: 1px solid rgba(0, 212, 255, 0.28);
+    border-radius: 99px;
+    box-shadow: 0 0 22px rgba(0, 212, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: chipFloat 6s ease-in-out infinite;
+}
+.chip-1 { left: 7%;  top: 27%;    animation-delay: 0s; }
+.chip-2 { right: 8%; top: 22%;    animation-delay: -1.5s; color: #a78bfa; border-color: rgba(124, 58, 237, 0.4); }
+.chip-3 { left: 10%; bottom: 24%; animation-delay: -3s;   color: #a78bfa; border-color: rgba(124, 58, 237, 0.4); }
+.chip-4 { right: 10%; bottom: 27%; animation-delay: -4.5s; }
+.chip-5 { left: 4%;  top: 52%;    animation-delay: -2s; }
+.chip-6 { right: 5%; top: 50%;    animation-delay: -5s;   color: #a78bfa; border-color: rgba(124, 58, 237, 0.4); }
+@keyframes chipFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-16px); }
+}
+@media (min-width: 1200px) {
+    .float-chip { display: block; }
+}
+
+/* ===========================
+   CARD SPOTLIGHT (follows cursor)
+   =========================== */
+.skill-card, .project-card, .timeline-content, .contact-card, .arch-card {
+    position: relative;
+}
+.skill-card::before, .project-card::before, .timeline-content::before,
+.contact-card::before, .arch-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(0, 212, 255, 0.09), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.skill-card:hover::before, .project-card:hover::before, .timeline-content:hover::before,
+.contact-card:hover::before, .arch-card:hover::before {
+    opacity: 1;
+}
+
+/* ===========================
+   5G ARCHITECTURE DIAGRAM
+   =========================== */
+.arch-section {
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.14), transparent 60%),
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        var(--bg);
+    background-size: auto, 26px 26px, auto;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.arch-sub {
+    text-align: center;
+    color: var(--light);
+    margin-top: -44px;
+    margin-bottom: 44px;
+}
+.arch-card {
+    background: rgba(17, 26, 46, 0.85);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px 22px;
+}
+.arch-scroll { overflow-x: auto; }
+.arch-svg { width: 100%; height: auto; display: block; }
+
+.arch-user path, .arch-ctrl path {
+    fill: none;
+    stroke-linecap: round;
+    animation: dashFlow 1s linear infinite;
+}
+.arch-user path { stroke: #00d4ff; stroke-width: 2.2; stroke-dasharray: 6 6; }
+.arch-ctrl path { stroke: #a78bfa; stroke-width: 1.8; stroke-dasharray: 4 8; }
+@keyframes dashFlow { to { stroke-dashoffset: -12; } }
+
+.arch-waves path {
+    opacity: 0;
+    animation: waveFade 1.8s ease-in-out infinite;
+    animation-delay: calc(var(--w) * 0.25s);
+}
+@keyframes waveFade {
+    0%, 100% { opacity: 0.1; }
+    40%      { opacity: 1; }
+}
+
+.arch-label text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    fill: #7de8ff;
+}
+
+.arch-node rect {
+    stroke-width: 1.4;
+    transition: stroke 0.25s, filter 0.25s;
+}
+.node-user rect { stroke: rgba(0, 212, 255, 0.45); }
+.node-ctrl rect { stroke: rgba(167, 139, 250, 0.55); }
+.arch-node:hover rect { stroke: #fff; filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6)); }
+.arch-node .n-main { font: 700 13px 'Inter', sans-serif; fill: var(--text); }
+.arch-node .n-sub  { font: 500 9.5px 'Inter', sans-serif; fill: #64748b; }
+
+.arch-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: var(--light);
+}
+.legend-item { display: inline-flex; align-items: center; gap: 10px; }
+.legend-swatch {
+    display: inline-block;
+    width: 34px; height: 0;
+    border-top: 2.2px dashed;
+}
+.swatch-user { border-color: #00d4ff; }
+.swatch-ctrl { border-color: #a78bfa; }
+
+/* ===========================
+   PROJECT BANNER ART
+   =========================== */
+.project-art {
+    height: 140px;
+    margin: -28px -28px 6px;
+    background: #0e1630;
+    border-radius: var(--radius) var(--radius) 0 0;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+.project-art svg {
+    width: 100%; height: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.project-card:hover .project-art svg { transform: scale(1.05); }
+
+.art-flowline line {
+    stroke-dasharray: 4 3;
+    animation: dashFlow 0.8s linear infinite;
+}
+.art-pass rect {
+    animation: passPulse 2.4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.12s);
+}
+@keyframes passPulse {
+    0%, 100% { opacity: 0.25; }
+    50%      { opacity: 1; }
+}
+
+.art-seq > g {
+    opacity: 0;
+    animation: seqShow 7s ease-in-out infinite;
+    animation-delay: var(--d);
+}
+@keyframes seqShow {
+    0%       { opacity: 0; }
+    6%, 80%  { opacity: 1; }
+    92%,100% { opacity: 0; }
+}
+
+.art-bars rect {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: barGrow 2.6s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes barGrow {
+    from { transform: scaleY(0.55); }
+    to   { transform: scaleY(1); }
+}
+.art-line {
+    stroke-dasharray: 260;
+    animation: lineDraw 4.5s ease-in-out infinite;
+}
+@keyframes lineDraw {
+    0%        { stroke-dashoffset: 260; }
+    45%, 85%  { stroke-dashoffset: 0; }
+    100%      { stroke-dashoffset: -260; }
+}
+.art-donut {
+    stroke-dasharray: 176;
+    animation: donutFill 4s ease-in-out infinite alternate;
+}
+@keyframes donutFill {
+    from { stroke-dashoffset: 120; }
+    to   { stroke-dashoffset: 28; }
+}
+
+/* ===========================
+   REDUCED MOTION
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+    .hero-rings, .float-chip, .arch-packets { display: none; }
+    .avatar-ring::before, .avatar-ring::after,
+    .arch-user path, .arch-ctrl path, .arch-waves path,
+    .art-flowline line, .art-pass rect, .art-bars rect, .art-line, .art-donut {
+        animation: none;
+    }
+    .arch-waves path, .art-pass rect { opacity: 1; }
+    .art-seq > g { animation: none; opacity: 1; }
+    .art-line { stroke-dashoffset: 0; }
+    .art-donut { stroke-dashoffset: 50; }
+}
