@@ -184,6 +184,18 @@ const statObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
 
 /* ===========================
+   CARD SPOTLIGHT
+   =========================== */
+const spotSelector = '.skill-card, .project-card, .timeline-content, .contact-card, .arch-card';
+document.addEventListener('mousemove', (e) => {
+    const card = e.target.closest(spotSelector);
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+}, { passive: true });
+
+/* ===========================
    NETWORK PARTICLE ANIMATION
    =========================== */
 const canvas = document.getElementById('particlesCanvas');
